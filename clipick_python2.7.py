@@ -33,16 +33,16 @@ you can explore other options here. you can try to create a loop if you need sev
 '''
 #
 
-Longitude 	        = -8.335343513
-Latitude 	                        = 39.2816836
-StartYear 	        = 2000 # Min=1951, Max=2100
-StartMonth 	        = 1
-StartDay 	                        = 1
-EndYear                          = 2003
+Longitude 	         = -8.335343513
+Latitude 	         = 39.2816836
+StartYear 	         = 2000 # Min=1951, Max=2100
+StartMonth 	         = 1
+StartDay 	         = 1
+EndYear              = 2003
 EndMonth 	         = 12
 EndDay 		         = 31
 IPCCAssessmentReport = 4 # either 4 or 5
-Dataset                            = 'METO-HC_HadRM3Q0_A1B_HadCM3Q0_DM_25km' # if IPCCAssessmentReport =4 use METO-HC_HadRM3Q0_A1B_HadCM3Q0_DM_25km. If IPCCAssessmentReport =5 use either knmihistorical, knmievaluation, knmircp45, knmircp85
+Dataset              = 'METO-HC_HadRM3Q0_A1B_HadCM3Q0_DM_25km' # if IPCCAssessmentReport =4 use METO-HC_HadRM3Q0_A1B_HadCM3Q0_DM_25km. If IPCCAssessmentReport =5 use either knmihistorical, knmievaluation, knmircp45, knmircp85
 
 
 
@@ -55,21 +55,21 @@ start_time = time.time() # this is facultative, just to calculate timming of ret
 
 # Build the HTTP REQUEST
 pars = {}
-pars['lat']        = Latitude
+pars['lat']       = Latitude
 pars['lon']       = Longitude
 pars['fmt']       = 'csv' # either csv, htmltable
-pars['tspan']   = 'd'# d=daily; m =monthly
+pars['tspan']     = 'd'# d=daily; m =monthly
 pars['sd']        = StartDay #'01'
-pars['sm']       = StartMonth #'01'
-pars['sy']         = StartYear
+pars['sm']        = StartMonth #'01'
+pars['sy']        = StartYear
 pars['ed']        = EndDay
-pars['em']       = EndMonth
+pars['em']        = EndMonth
 pars['ey']        = EndYear
 pars['dts']       = Dataset# Beware of dates for extraction
-pars['ar']         = IPCCAssessmentReport # either 4 or 5
-pars['mod']     = "hisafe" # either yieldsafe or hisafe
-url                    = 'http://www.isa.ulisboa.pt/proj/clipick/climaterequest_fast.php'
-url_pars           = urllib.urlencode(pars)
+pars['ar']        = IPCCAssessmentReport # either 4 or 5
+pars['mod']       = "hisafe" # either yieldsafe or hisafe
+url               = 'http://www.isa.ulisboa.pt/proj/clipick/climaterequest_fast.php'
+url_pars          = urllib.urlencode(pars)
 full_url              = url + '?' + url_pars
 print "Request made to " + full_url
 response         = urllib2.urlopen(full_url)
